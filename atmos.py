@@ -9,8 +9,10 @@ class Atmos:
 		# Assuming alt is given in meters
 		alt = alt/1000
 		idx = 0
-		while alt-self.alt[idx] < alt-self.alt[idx + 1]:
+		while abs(alt-self.alt[idx]) < abs(alt-self.alt[idx + 1]):
 			idx += 1
-		diff = 0
-		
-		return [self.nu[idx],self.rho[idx]]
+		diff = abs(alt - self.alt[idx])/(self.alt[idx+1]-self.alt[idx])
+		nu = self.nu[idx]+diff*abs(self.nu[idx]-self.nu[idx+1])
+		rho = self.rho[idx]+diff*abs(self.rho[idx]-self.rho[idx+1])
+
+		return [nu,rho]
