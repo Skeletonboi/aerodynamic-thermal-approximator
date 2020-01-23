@@ -37,6 +37,7 @@ if bi >= 0.1:
 while (alt <= apogee):
     # Atmospheric Property Generation
     # ** INCOMPLETE **
+    nu = getAtmos
 
     # Recovery Temperature Calculation
     M = 0.8     # Mach Speed to be redefined w/ profile later
