@@ -10,8 +10,8 @@ from math import sqrt, cos
 data = []       # Each index contains: [altitude, h]
 
 # Data entry
-h = 0.001 # Global Variable
-constant = {
+h = 0.001 # Dummy placeholder global var.
+constants = {
 "delta":5,      # Wall Thickness
 "k":6,          # Thermal Conductivity
 "gamma":5       # Specific Heat Ratio of Flow
@@ -24,7 +24,7 @@ alt = alt_init
 alt_step = apogee/1000
 
 # Biot Number Check (for thin wall)
-bi = h*(constant.delta/constant.k)
+bi = h*(constants.delta/constants.k)
 if bi >= 0.1:
     print("Wall cannot be modelled as thermally thin")
 while (alt <= apogee):
