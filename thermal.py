@@ -1,5 +1,11 @@
 from math import sqrt, cos
-
+#########################################################
+# Aerodynamic Heating Prediction Tool for Supersonic Vehicles
+#########################################################
+# Design proposed by Bugra Simsek, Rocketsan Missiles Industries Inc.
+# #####
+# Atmospheric coefficients interpolated from U.S. Standard Atmosphere 1976
+###############################################################
 # Heat transfer within boundary layer as a func. of Mach#,
 # altitude, and angle of attack. Laminar + Turbulent
 # Based on the "Reference Temperature Method of Eckert" where
@@ -33,7 +39,6 @@ alt_step = apogee/1000
 bi = h*(constant.delta/constant.k)
 if bi >= 0.1:
     print("Wall cannot be modelled as thermally thin")
-
 while (alt <= apogee):
     # Atmospheric Property Generation
     # ** INCOMPLETE **
@@ -50,7 +55,7 @@ while (alt <= apogee):
         Poinf = P*((1+((gamma-1/2))*(M**2))**(gamma/(gamma-1)))
         t1 = ((gamma+1)*(M**2)/2)/(1+((gamma-1)/2)*(M**2))
         t2 = (2*gamma/(gamma+gamma1))*(M**2) - ((gamma-1)/(gamma+1))
-        PoL = Poinf*(t1**(gamma/(gamma-1)))*(t2**(1/(1-gamma)))
+        PoL = Poinf*(t1qA**(gamma/(gamma-1)))*(t2**(1/(1-gamma)))
         Cpmax = (PoL-P)/q
         Pl = q*Cpmax *(cos(aoa)**2)+P  # [FIX] current cos is in radians
         Ml = sqrt((((PoL/Pl)**((gamma-1)/gamma))-1)*(2/(gamma-1)))
@@ -78,3 +83,4 @@ while (alt <= apogee):
 print("Altitude\t\th")
 for val in data:
     print(val[0] + "\t\t\t" + val[1])
+
