@@ -6,18 +6,6 @@ from math import sqrt, cos
 # #####
 # Atmospheric coefficients interpolated from U.S. Standard Atmosphere 1976
 ###############################################################
-# Heat transfer within boundary layer as a func. of Mach#,
-# altitude, and angle of attack. Laminar + Turbulent
-# Based on the "Reference Temperature Method of Eckert" where
-# heat transfer rates are calculated using incompressible flow
-# eqns evaluated at Eckert's reference temp (between wall and
-# recovery temp)
-# Lumped heat capacitance method is used for thermally thin
-# walls.
-# Modified Mangler transformation is used for flow passing
-# on conical side of vehicle, rest is flat plate.
-# Heat transfer coefficient is calculated iterativelyy until
-# at each time-step.
 
 data = []       # Each index contains: [altitude, h]
 
