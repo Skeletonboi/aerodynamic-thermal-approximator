@@ -1,23 +1,17 @@
 from math import sqrt, cos
-
-# Heat transfer within boundary layer as a func. of Mach#,
-# altitude, and angle of attack. Laminar + Turbulent
-# Based on the "Reference Temperature Method of Eckert" where
-# heat transfer rates are calculated using incompressible flow
-# eqns evaluated at Eckert's reference temp (between wall and
-# recovery temp)
-# Lumped heat capacitance method is used for thermally thin
-# walls.
-# Modified Mangler transformation is used for flow passing
-# on conical side of vehicle, rest is flat plate.
-# Heat transfer coefficient is calculated iterativelyy until
-# at each time-step.
+#########################################################
+# Aerodynamic Heating Prediction Tool for Supersonic Vehicles
+#########################################################
+# Design proposed by Bugra Simsek, Rocketsan Missiles Industries Inc.
+# #####
+# Atmospheric coefficients interpolated from U.S. Standard Atmosphere 1976
+###############################################################
 
 data = []       # Each index contains: [altitude, h]
 
 # Data entry
-h = 0.001 # Global Variable
-constant = {
+h = 0.001 # Dummy placeholder global var.
+constants = {
 "delta":5,      # Wall Thickness
 "k":6,          # Thermal Conductivity
 "gamma":5       # Specific Heat Ratio of Flow
@@ -30,10 +24,9 @@ alt = alt_init
 alt_step = apogee/1000
 
 # Biot Number Check (for thin wall)
-bi = h*(constant.delta/constant.k)
+bi = h*(constants.delta/constants.k)
 if bi >= 0.1:
     print("Wall cannot be modelled as thermally thin")
-
 while (alt <= apogee):
     # Atmospheric Property Generation
     # ** INCOMPLETE **
@@ -51,7 +44,7 @@ while (alt <= apogee):
         Poinf = P*((1+((gamma-1/2))*(M**2))**(gamma/(gamma-1)))
         t1 = ((gamma+1)*(M**2)/2)/(1+((gamma-1)/2)*(M**2))
         t2 = (2*gamma/(gamma+gamma1))*(M**2) - ((gamma-1)/(gamma+1))
-        PoL = Poinf*(t1**(gamma/(gamma-1)))*(t2**(1/(1-gamma)))
+        PoL = Poinf*(t1qA**(gamma/(gamma-1)))*(t2**(1/(1-gamma)))
         Cpmax = (PoL-P)/q
         Pl = q*Cpmax *(cos(aoa)**2)+P  # [FIX] current cos is in radians
         Ml = sqrt((((PoL/Pl)**((gamma-1)/gamma))-1)*(2/(gamma-1)))
@@ -78,4 +71,9 @@ while (alt <= apogee):
 # ** INCOMPLETE **
 print("Altitude\t\th")
 for val in data:
+<<<<<<< HEAD
     print(val[0] + "\t\t\t" + val[1])
+=======
+    print(val[0] + "\t\t\t" + val[1])
+
+>>>>>>> bce0fbcfad3cc1238acbe9ca79a160774b7ea6c8
