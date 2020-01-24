@@ -1,0 +1,23 @@
+function calcTemp (V, alt, aoa)
+	* getAtmos ()
+	* calcRecoveryTemp ()
+	for (all nodes)
+		while |h_prev - h_curr| >= 0.001
+			* calc_Twall (h)
+			* calc_h ()
+	return Twall
+
+function main ()
+	// * Define all constants *
+
+	alt_vec = [...]
+	speed_vec = [...]
+	time_vec = [...]
+	aoa_vec = [...]
+	* getAtmos ()
+
+	* calc_h (temp_init, properties from getAtmos())
+
+	for i in time_vector
+		* calcTemp (speed_vec[i], alt_vec[i], aoa_vec[i])
+	* printTable ()
