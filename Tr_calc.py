@@ -14,13 +14,13 @@ import math
 #Pr- prandtl number
 
 #needed inputs
-#True/False,Laminar vs turbulent
+#T0L,gamma,isLaminar,Pr,Cpmax,theta,Pinf,q,Minf
 
 
-def get_Tr(T0L,gamma,R_tf,Pr,Cpmax,theta,Pinf,q,Minf):
+def get_Tr(T0L,gamma,isLaminar,Pr,Cpmax,theta,Pinf,q,Minf):
 	Ml=get_Ml(Cpmax,gamma,theta,Pinf,q,Minf)
 	Tl=T0L/(1+((gamma-1)/2)*Ml)
-	if (R_tf==True):
+	if (isLaminar==True):
 		r=sqrt(Pr)
 	else:
 		r=Pr**(1/3)
