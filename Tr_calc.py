@@ -14,7 +14,7 @@ import math
 #Pr- prandtl number
 
 #needed inputs
-#T0L,gamma,isLaminar,Pr,Cpmax,theta,Pinf,q,Minf
+#T0L,gamma,isLaminar,Pr,Cpmax,AOA,Pinf,q,Minf
 
 
 def get_Tr(T0L,gamma,isLaminar,Pr,Cpmax,AOA,Pinf,q,Minf):
