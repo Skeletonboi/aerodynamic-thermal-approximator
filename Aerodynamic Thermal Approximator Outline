@@ -19,5 +19,5 @@ function main ()
 	* calc_h (temp_init, properties from getAtmos())
 
 	for i in time_vector
-		* calcTemp (speed_vec[i], alt_vec[i], aoa_vec[i])
+		* calcTemp (temp, h, Area, recovery Temp, emissivity, ref temp, time step, mass, specific heat capacity)
 	* printTable ()
