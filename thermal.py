@@ -1,4 +1,5 @@
 from math import sqrt, cos
+# Change
 #########################################################
 # Aerodynamic Heating Prediction Tool for Supersonic Vehicles
 #########################################################
@@ -30,7 +31,6 @@ if bi >= 0.1:
 while (alt <= apogee):
     # Atmospheric Property Generation
     # ** INCOMPLETE **
-    nu = getAtmos
 
     # Recovery Temperature Calculation
     M = 0.8     # Mach Speed to be redefined w/ profile later
@@ -69,11 +69,3 @@ while (alt <= apogee):
 
 # Print output for all time steps
 # ** INCOMPLETE **
-print("Altitude\t\th")
-for val in data:
-<<<<<<< HEAD
-    print(val[0] + "\t\t\t" + val[1])
-=======
-    print(val[0] + "\t\t\t" + val[1])
-
->>>>>>> bce0fbcfad3cc1238acbe9ca79a160774b7ea6c8
