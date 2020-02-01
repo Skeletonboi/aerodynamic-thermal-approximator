@@ -71,12 +71,30 @@ while (alt <= apogee):
 # ** INCOMPLETE **
 
 # NEW CODE FOR MAIN FUNCTION BELOW!!
+import constants
+
 def main ():
     # Define all constants
-    alt_vec
+    x_char = constants.getx_char()
+    k = constants.getk()
+    c_p = constants.ge
+
+    alt_vec = []
+    speed_vec = []
+    time_vec = []
+    aoa_vec = []
+    temp_vec = []
+
+    atmosProperties = []
+    atmosProperties = getAtmos()
+
+    for i in time_vec:
+        T = calcTemp()
+        temp_vec.append(T)
+
+    printTable()
 
 def calcTemp (...):
     atmosProperties = []
-    atmosProperties = getAtmos() # Return an array
-
+    atmosProperties = getAtmos()    # Return an array
 
