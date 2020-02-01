@@ -77,7 +77,7 @@ def main ():
     # Define all constants
     x_char = constants.getx_char()
     k = constants.getk()
-    c_p = constants.ge
+    c_p = constants.getc_p()
 
     alt_vec = []
     speed_vec = []
