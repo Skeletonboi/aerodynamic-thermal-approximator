@@ -4,7 +4,7 @@ function calcTemp (V, alt, aoa)
 	for (all nodes)
 		while |h_prev - h_curr| >= 0.001
 			* calc_Twall (h)
-			* calc_h ()
+			* calc_h (x, rho, x_cr, k, c_p, mu, T_w, T_0L, c_pmax, q, theta, M, M_inf, P_inf)
 	return Twall
 
 function main ()
@@ -16,8 +16,8 @@ function main ()
 	aoa_vec = [...]
 	* getAtmos ()
 
-	* calc_h (temp_init, properties from getAtmos())
+	* calc_h (x, rho, x_cr, k, c_p, mu, T_w, T_0L, c_pmax, q, theta, M, M_inf, P_inf)
 
 	for i in time_vector
-		* calcTemp (temp, h, Area, recovery Temp, emissivity, ref temp, time step, mass, specific heat capacity)
+		* calcTemp (temp, h, Area, emissivity, ref temp, time step, mass, specific heat capacity)
 	* printTable ()

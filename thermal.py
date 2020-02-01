@@ -69,3 +69,14 @@ while (alt <= apogee):
 
 # Print output for all time steps
 # ** INCOMPLETE **
+
+# NEW CODE FOR MAIN FUNCTION BELOW!!
+def main ():
+    # Define all constants
+    alt_vec
+
+def calcTemp (...):
+    atmosProperties = []
+    atmosProperties = getAtmos() # Return an array
+
+
