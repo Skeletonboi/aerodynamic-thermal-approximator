@@ -1,0 +1,12 @@
+density
+velocity
+char-leng
+k
+Cp
+dynamic viscosity (mu)
+distance from nosetip
+Twall - initial condition
+altitude - initial (not sea level)
+T_local_stag
+Minf = freestream Mach Number
+Cp
