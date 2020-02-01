@@ -10,3 +10,4 @@ altitude - initial (not sea level)
 T_local_stag
 Minf = freestream Mach Number
 Cp
+Pinf = freestream pressure
