@@ -72,21 +72,25 @@ while (alt <= apogee):
 
 # NEW CODE FOR MAIN FUNCTION BELOW!!
 import constants
+import flightData
+import atmos
 
 def main ():
     # Define all constants
     x_char = constants.getx_char()
     k = constants.getk()
     c_p = constants.getc_p()
+    alt = constants.getAlt()    # Initial Altitude
+    T_wall = constants.getT_wall()  # Initial Wall Temp
 
-    alt_vec = []
-    speed_vec = []
-    time_vec = []
-    aoa_vec = []
-    temp_vec = []
+    # Get Flight Data
+    alt_vec = flightData.getAlt()
+    speed_vec = flightData.getSpeed()
+    time_vec = flightData.getTime()
+    temp_vec = [T_wall]
 
     atmosProperties = []
-    atmosProperties = getAtmos()
+    atmosProperties = atmos.getAtmos()
 
     for i in time_vec:
         T = calcTemp()
