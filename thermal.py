@@ -74,13 +74,14 @@ while (alt <= apogee):
 import constants
 import flightData
 import atmos
+import calc
 
 def main ():
     # Define all constants
     x_char = constants.getx_char()
     k = constants.getk()
     c_p = constants.getc_p()
-    alt = constants.getAlt()    # Initial Altitude
+    alt = constants.getAlt()        # Initial Altitude
     T_wall = constants.getT_wall()  # Initial Wall Temp
 
     # Get Flight Data
@@ -88,17 +89,17 @@ def main ():
     speed_vec = flightData.getSpeed()
     time_vec = flightData.getTime()
     temp_vec = [T_wall]
-
     atmosProperties = []
-    atmosProperties = atmos.getAtmos()
 
-    for i in time_vec:
-        T = calcTemp()
-        temp_vec.append(T)
+    for i in range(0, len(time_vec)):
+        atmosProperties = atmos.getAtmos()
+        Tr = calc.calcTr()
+        h1 = calc.calc_h()          # First time setup for h
+        T_wall = calcTemp()
+        temp_vec.append(T_wall)
 
     printTable()
 
 def calcTemp (...):
-    atmosProperties = []
-    atmosProperties = getAtmos()    # Return an array
-
+    h2 = calc.calc_h()              # Won't this always be equal to h1??
+    while (abs(h2-h1) >= 0.001):
