@@ -90,12 +90,11 @@ def main ():
     speed_vec = flightData.getSpeed()
     time_vec = flightData.getTime()
     temp_vec = [T_wall]
-    atmosProperties = []
+    atmosData = atmos.Atmos() # Check if this is instantiating class properly
 
     for i in range(0, len(time_vec)):
-        atmosProperties = atmos.getAtmos()
-        Re = dimensionless.calcRe(atmosProperties[1], mu, speed_vec[i], x_char) #**Don't know mu**
-        Pr = dimensionless.calcPr(mu, k, c_p)
+        Re = dimensionless.calcRe(atmosData.getRho(alt_vec[i]), atmosData.getMu(alt_vec[i]), speed_vec[i], x_char)
+        Pr = dimensionless.calcPr(atmosData.getMu(alt_vec[i]), k, c_p)
         Nu = dimensionless.calcNu(Re, Pr, isLaminar)    #Args: (int, int, boolean)
                                                         #Need to define laminar based on Re (I think) above
         Tr = calc.calcTr()
