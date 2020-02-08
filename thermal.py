@@ -35,7 +35,7 @@ while (alt <= apogee):
     # Recovery Temperature Calculation
     M = 0.8     # Mach Speed to be redefined w/ profile later
     P = 0.147   # Freestream Pressure re-defined later
-    q = 0.148   # Dynamic Pressure
+    # q = 0.148   # Dynamic Pressure
     aoa = 2     # Degree/Rad? Re-define
     if M < 1:
         PoL = ((1+((gamma-1)/2)*(M**2))**(gamma/(gamma-1))) # Pl cancelled out
@@ -82,7 +82,6 @@ def main ():
     x_char = constants.getx_char()
     k = constants.getk()
     c_p = constants.getc_p()
-    alt = constants.getAlt()        # Initial Altitude
     T_wall = constants.getT_wall()  # Initial Wall Temp
 
     # Get Flight Data
@@ -93,14 +92,32 @@ def main ():
     atmosData = atmos.Atmos() # Check if this is instantiating class properly
 
     for i in range(0, len(time_vec)):
+        # Calculating Nu
         isLaminar = True
         Re = dimensionless.calcRe(atmosData.getRho(alt_vec[i]), atmosData.getMu(alt_vec[i]), speed_vec[i], x_char)
         if (Re >= 10**5):
             isLaminar = False
         Pr = dimensionless.calcPr(atmosData.getMu(alt_vec[i]), k, c_p)
         Nu = dimensionless.calcNu(Re, Pr, isLaminar)    #Args: (int, int, boolean)
-        Tr = calc.calcTr()
-        h1 = calc.calc_h()          # First time setup for h
+        T_localstag = atmosData.getT_localstag(alt_vec[i])          # TODO: Add this function to atmos.py
+        # Calculating thermal conductivity at reference temperature
+        P_local = calc.calc_P_local(C_pmax, P_inf, q)               # Victor: How is P_local cancelling out??
+        P_infstag = calc.calc_P_infstag(M_inf)                      # Victor: How is M_inf different from the mach num? Which one uses the speed vector we're given?
+        if (speed_vec[i]/343 < 1):          # If mach < 1
+            P_localstag = calc.calc_P_localstag_sub(P_local, P_infstag, M_inf)
+        else:                               # If mach >= 1
+            P_localstag = calc.calc_P_localstag_super(P_infstag, M_inf)
+        mach_local = calc.calc_mach_local(P_localstag, P_local)
+        if (isLaminar):
+            recov_fact = sqrt(Pr)
+        else:
+            recov_fact = Pr**(1/3)
+        T_local = calc.calc_T_local(T_localstag, mach_local)
+        T_recov = calc.calc_T_recov(recov_fact, mach_local)
+        T_ref = calc.calc_T_ref(T_local, T_recov)
+        k_ref = calc.calc_k_ref(T_ref)
+        if (i == 0):                        # Calculate h for first time step
+            h1 = calc.calc_h(Nu, k_ref, dist)  # x will be some constant
         T_wall = calcTemp()
         temp_vec.append(T_wall)
 
