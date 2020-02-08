@@ -93,10 +93,12 @@ def main ():
     atmosData = atmos.Atmos() # Check if this is instantiating class properly
 
     for i in range(0, len(time_vec)):
+        isLaminar = True
         Re = dimensionless.calcRe(atmosData.getRho(alt_vec[i]), atmosData.getMu(alt_vec[i]), speed_vec[i], x_char)
+        if (Re >= 10**5):
+            isLaminar = False
         Pr = dimensionless.calcPr(atmosData.getMu(alt_vec[i]), k, c_p)
         Nu = dimensionless.calcNu(Re, Pr, isLaminar)    #Args: (int, int, boolean)
-                                                        #Need to define laminar based on Re (I think) above
         Tr = calc.calcTr()
         h1 = calc.calc_h()          # First time setup for h
         T_wall = calcTemp()
