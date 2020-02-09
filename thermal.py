@@ -117,7 +117,7 @@ def main ():
         T_ref = calc.calc_T_ref(T_local, T_recov)
         k_ref = calc.calc_k_ref(T_ref)
         if (i == 0):                        # Calculate h for first time step
-            h1 = calc.calc_h(Nu, k_ref, dist)  # x will be some constant
+            h1 = calc.calc_h(Nu, k_ref, dist)  # dist will be some constant
         T_wall = calcTemp()
         temp_vec.append(T_wall)
 
