@@ -1,0 +1,31 @@
+** Functions required in each Class **
+
+constants.py
+	getx_char()						| DONE
+	getk()							| DONE
+	getc_p()						| DONE
+	getT_wall						| DONE
+flightData.py
+	getAlt()						| DONE
+	getSpeed()						| DONE
+	getTime()						| DONE
+atmos.py
+	getRho(alt)						| DONE
+	getMu(alt)						| DONE (check this)
+	getT_localstag(alt)					| TODO
+calc.py
+	calc_P_local(A_pmax, P_inf, q)				| TODO
+	calc_P_infstag(M_inf)					| TODO
+	calc_P_localstag_sub(P_local, P_infstag, M_inf)		| TODO
+	calc_P_localstag_super(P_infstag, M_inf)		| TODO
+	calc_mach_local(P_localstag, P_local)			| TODO
+	calc_T_local(T_localstag, mach_local)			| TODO
+	calc_T_recov(recov_fact, mach_local)			| TODO
+	calc_T_ref(T_local, T_recov)				| TODO
+	calc_k_ref(T_ref)					| TODO
+	calc_h(Nu, k_ref, dist)					| TODO
+	calcTemp(...)						| TODO
+deminsionless.py
+	calcRe(rho, mu, speed, x_char)				| TODO
+	calcPr(mu, k, c_p)					| TODO
+	calcNu(Re, Pr, isLaminar)				| TODO
