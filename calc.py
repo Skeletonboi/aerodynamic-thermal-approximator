@@ -28,4 +28,7 @@ def calc_k_ref(T_ref):
 def calc_h(Nu, k_ref, dist):
 
 
+# Recursive function
 def calcTemp():     # Need to add arguments to this
+    h2 = calc_h()   # Won't this always be equal to h1??
+    while (abs(h2 - h1) >= 0.001):
