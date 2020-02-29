@@ -1,15 +1,15 @@
 # ** Define these before running simulation **
 
 # Characteristic Length [m]
-x_char = NaN
+x_char = None
 # Thermal Conductivity
-k = NaN
+k = None
 # Specific Heat Capacity
-c_p = NaN
+c_p = None
 # Initial Altitude
-alt_init = NaN
+alt_init = None
 # Initial Wall Temp
-T_wall_init = NaN
+T_wall_init = None
 
 def getx_char():
     return x_char
