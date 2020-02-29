@@ -14,12 +14,12 @@ def getSpeed():
     for i in df.iloc[:,1]:
         Speed_Data += [i]
     return Speed_Data
-    return Speed_Data
+
 
 def getTime():
     Time_Data = []
     for i in df.iloc[:,2]:
         Time_Data += [i]
     return Time_Data
-    return Time_Data
+ 
 
