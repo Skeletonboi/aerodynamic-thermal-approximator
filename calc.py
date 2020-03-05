@@ -1,5 +1,11 @@
-def calc_P_local(A_pmax, P_inf, q):
+import math as m
+from flightData import getAOA
 
+def calc_P_local(C_pmax, P_inf, q, AOA):
+    #q : dynamic pressure
+    #C_pmax : maximum pressure coefficient on the body surface
+    #P_inf : free stream pressure
+    return q*C_pmax*(m.cos(AOA)**2)+P_inf
 
 def calc_P_infstag(M_inf):
 
