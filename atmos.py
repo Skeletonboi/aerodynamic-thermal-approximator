@@ -44,8 +44,7 @@ class Atmos:
 			idx += 1
 		# Interpolate between the altitude  = abs(alt - self.alt[idx])/(self.alt[idx+1]-self.alt[idx])
 		# Return viscosity
-		mu = self.mu[idx]+diff*abs(self.mu[idx]-self.mu[idxvalues
-		diff+1])
+		mu = self.mu[idx]+diff*abs(self.mu[idx]-self.mu[idxvaluesdiff+1]) #what are these things?
 
 		#TODO: Add 3rd index: mu (dependent on alt)
 		return mu
