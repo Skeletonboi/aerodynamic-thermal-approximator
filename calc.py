@@ -29,7 +29,7 @@ def calc_P_localstag_super(P_infstag, M_inf):
 def calc_mach_local(P_localstag, P_local):
     factor1 = (gamma-1)/gamma
     factor2 = (P_localstag/P_local)**factor1-1
-    mach_local=(factor2*(1/gamma-1))**.5
+    mach_local=(factor2*(2/gamma-1))**.5
     return mach_local
 
 def calc_T_local(T_localstag, mach_local):
