@@ -21,14 +21,14 @@ def get_Tr(T0L,gamma,isLaminar,Pr,Cpmax,AOA,Pinf,q,Minf):
 	Ml=get_Ml(Cpmax,gamma,AOA,Pinf,q,Minf)
 	Tl=T0L/(1+((gamma-1)/2)*Ml)
 	if (isLaminar==True):
-		r=sqrt(Pr)
+		r=math.sqrt(Pr)
 	else:
 		r=Pr**(1/3)
-	Tr_cal=Tl*(1+(r*(gamma-1)/2)*(ML**2))
+	Tr_cal=Tl*(1+(r*(gamma-1)/2)*(Ml**2))
 	return Tr_cal
 
 def get_Ml(Cpmax,gamma,AOA,Pinf,q,Minf):
-	Pl=q*Cpmax*(cos(AOA)**2)+Pinf
+	Pl=q*Cpmax*(math.cos(AOA)**2)+Pinf
 	P0L=Pl*(1+((gamma-1)/2)*(Minf**2))**(gamma/(gamma-1))
-	Ml_cal=sqrt((((P0L/Pl)**((gamma-1)/gamma))-1)*(2/(gamma-1)))
+	Ml_cal=math.sqrt((((P0L/Pl)**((gamma-1)/gamma))-1)*(2/(gamma-1)))
 	return Ml_cal

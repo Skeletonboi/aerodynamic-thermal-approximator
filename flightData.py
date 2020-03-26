@@ -22,4 +22,5 @@ def getTime():
         Time_Data += [i]
     return Time_Data
  
-
+def getAOA():   #TODO: Complete
+    return 1

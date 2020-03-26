@@ -42,13 +42,15 @@ class Atmos:
 		# Index to the correct altitude range
 		while abs(alt-self.alt[idx]) < abs(alt-self.alt[idx + 1]):
 			idx += 1
-		# Interpolate between the altitude values
-		diff = abs(alt - self.alt[idx])/(self.alt[idx+1]-self.alt[idx])
+		# Interpolate between the altitude  = abs(alt - self.alt[idx])/(self.alt[idx+1]-self.alt[idx])
 		# Return viscosity
-		mu = self.mu[idx]+diff*abs(self.mu[idx]-self.mu[idx+1])
+		mu = self.mu[idx]+diff*abs(self.mu[idx]-self.mu[idxvaluesdiff+1]) #what are these things?
 
 		#TODO: Add 3rd index: mu (dependent on alt)
 		return mu
+	def getP(self,alt):	#TODO: Add Atmospheric Pressure Data wrt Altitude
+		return 1
+
 
 if __name__=='__main__':
 	x = Atmos()
