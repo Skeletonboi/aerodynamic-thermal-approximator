@@ -5,7 +5,7 @@ constants.py
 	getk()							|double	   | DONE
 	getc_p()						|double	   | DONE
 	getT_wall						|double	   | DONE
-	gamma							|double    | TODO
+	gamma							|double    | TODO	|Brandon
 flightData.py
 	getAlt()						|[int]	   | DONE
 	getSpeed()						|[double]  | DONE
