@@ -16,7 +16,7 @@ atmos.py
 	getT_localstag(alt)					| TODO
 						
 calc.py
-	calc_P_local(A_pmax, P_inf, q, AOA)				| DONE
+	calc_P_local(A_pmax, P_inf, q, AOA)			| DONE
 	calc_P_infstag(M_inf)					| DONE
 	calc_P_localstag_sub(P_local, P_infstag, M_inf)		| DONE
 	calc_P_localstag_super(P_infstag, M_inf)		| DONE
