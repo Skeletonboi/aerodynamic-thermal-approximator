@@ -1,7 +1,7 @@
 #load pandas libraries
 import pandas as pd
-colnames = ['altData', 'speedData', 'timeData']
-df = pd.read_csv("flightData.csv", names=['altData','speedData','timeData'], usecols=[0,1,2],header=None)
+colnames = ['altData', 'speedData', 'timeData','A0AData']
+df = pd.read_csv("flightData.csv", names=['altData','speedData','timeData','A0AData'], usecols=[0,1,2,3],header=None)
 
 def getAlt():
     Alt_Data=[]
@@ -22,5 +22,8 @@ def getTime():
         Time_Data += [i]
     return Time_Data
  
-def getAOA():   #TODO: Complete
-    return 1
+def getAOA():  
+    A0A_Data = []
+    for i in df.iloc[:,3]:
+        A0A_Data += [i]
+    return A0A_Data
