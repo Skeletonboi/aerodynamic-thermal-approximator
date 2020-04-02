@@ -33,18 +33,18 @@ def calc_mach_local(P_localstag, P_local):
     return mach_local
 
 def calc_T_local(T_localstag, mach_local):
-
+    pass
 
 def calc_T_recov(recov_fact, mach_local):
-
+    pass
 
 def calc_T_ref(T_local, T_recov):
-
+    pass
 
 def calc_k_ref(T_ref):
-
+    pass
 
 def calc_h(Nu, k_ref, dist):
-
+    pass
 
 def calcTemp():     # Need to add arguments to this
