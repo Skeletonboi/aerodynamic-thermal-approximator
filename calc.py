@@ -35,10 +35,12 @@ def calc_mach_local(P_localstag, P_local):
     return mach_local
 
 def calc_T_local(T_localstag, mach_local):    
-    pass
+    T_local = T_localstag/(1+((gamma-1)/2)*mach_local**2)
+    return T_local
 
-def calc_T_recov(recov_fact, mach_local):
-    pass
+def calc_T_recov(T_local, recov_fact, mach_local):
+    T_recov = T_local*(1+(mach_local**2)*recov_fact*(gamma-1)/2)
+    return T_recov
 
 def calc_T_ref(T_local, T_recov):
     pass
