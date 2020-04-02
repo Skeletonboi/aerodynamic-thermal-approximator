@@ -49,7 +49,11 @@ def calc_k_ref(T_ref):
     pass
 
 def calc_h(Nu, k_ref, dist):
-    pass
+    h=(3**0.5)*(Nu*k_ref)/dist
+    return h
 
+# Recursive function
 def calcTemp():     # Need to add arguments to this
-    pass
+    h2 = calc_h()   # Won't this always be equal to h1??
+    while (abs(h2 - h1) >= 0.001):
+
