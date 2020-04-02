@@ -45,7 +45,8 @@ def calc_k_ref(T_ref):
     pass
 
 def calc_h(Nu, k_ref, dist):
-    pass
+    h=(Nu*k_ref)/dist
+    return h
 
 # Recursive function
 def calcTemp():     # Need to add arguments to this
