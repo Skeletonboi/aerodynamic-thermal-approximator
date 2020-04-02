@@ -28,6 +28,6 @@ calc.py
 	calc_h(Nu, k_ref, dist)					|double	   | TODO	|Brandon
 	calcTemp(...)						|double	   | TODO	|Saksham
 deminsionless.py
-	calcRe(rho, mu, speed, x_char)				|double	   | TODO	|Saksham
-	calcPr(mu, k, c_p)					|double	   | TODO	|Saksham
-	calcNu(Re, Pr, isLaminar)				|double	   | TODO	|Saksham
+	calcRe(rho, mu, speed, x_char)				|double	   | DONE	|Saksham
+	calcPr(mu, k, c_p)					|double	   | DONE	|Saksham
+	calcNu(Re, Pr, isLaminar)				|double	   | DONE	|Saksham
