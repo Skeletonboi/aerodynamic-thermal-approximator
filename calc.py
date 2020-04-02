@@ -2,6 +2,8 @@ import math as m
 from flightData import getAOA
 from constants import *
 
+gamma = get_gamma()
+
 def calc_P_local(C_pmax, P_inf, q, AOA):
     #q : dynamic pressure
     #C_pmax : maximum pressure coefficient on the body surface
@@ -32,11 +34,13 @@ def calc_mach_local(P_localstag, P_local):
     mach_local=(factor2*(2/gamma-1))**.5
     return mach_local
 
-def calc_T_local(T_localstag, mach_local):
-    pass
+def calc_T_local(T_localstag, mach_local):    
+    T_local = T_localstag/(1+((gamma-1)/2)*mach_local**2)
+    return T_local
 
-def calc_T_recov(recov_fact, mach_local):
-    pass
+def calc_T_recov(T_local, recov_fact, mach_local):
+    T_recov = T_local*(1+(mach_local**2)*recov_fact*(gamma-1)/2)
+    return T_recov
 
 def calc_T_ref(T_local, T_recov):
     pass
@@ -45,9 +49,11 @@ def calc_k_ref(T_ref):
     pass
 
 def calc_h(Nu, k_ref, dist):
-    pass
+    h=(3**0.5)*(Nu*k_ref)/dist
+    return h
 
 # Recursive function
 def calcTemp():     # Need to add arguments to this
     h2 = calc_h()   # Won't this always be equal to h1??
     while (abs(h2 - h1) >= 0.001):
+

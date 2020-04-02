@@ -10,6 +10,8 @@ c_p = None
 alt_init = None
 # Initial Wall Temp
 T_wall_init = None
+#gamma
+gamma = None
 
 def getx_char():
     return x_char
@@ -21,3 +23,5 @@ def getAlt():
     return alt_init
 def getT_wall():
     return T_wall_init
+def get_gamma():
+    return gamma
