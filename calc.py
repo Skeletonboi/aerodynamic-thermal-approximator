@@ -2,6 +2,8 @@ import math as m
 from flightData import getAOA
 from constants import *
 
+gamma = get_gamma()
+
 def calc_P_local(C_pmax, P_inf, q, AOA):
     #q : dynamic pressure
     #C_pmax : maximum pressure coefficient on the body surface
@@ -32,7 +34,7 @@ def calc_mach_local(P_localstag, P_local):
     mach_local=(factor2*(2/gamma-1))**.5
     return mach_local
 
-def calc_T_local(T_localstag, mach_local):
+def calc_T_local(T_localstag, mach_local):    
     pass
 
 def calc_T_recov(recov_fact, mach_local):
@@ -48,3 +50,4 @@ def calc_h(Nu, k_ref, dist):
     pass
 
 def calcTemp():     # Need to add arguments to this
+    pass
