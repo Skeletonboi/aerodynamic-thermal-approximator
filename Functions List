@@ -1,33 +1,33 @@
 ** Functions required in each Class **
 
 constants.py
-	getx_char()						| DONE
-	getk()							| DONE
-	getc_p()						| DONE
-	getT_wall						| DONE
-	gamma							| TODO
+	getx_char()						|double	   | DONE
+	getk()							|double	   | DONE
+	getc_p()						|double	   | DONE
+	getT_wall						|double	   | DONE
+	gamma							|double    | TODO	|Brandon
 flightData.py
-	getAlt()						| DONE
-	getSpeed()						| DONE
-	getTime()						| DONE
+	getAlt()						|[int]	   | DONE
+	getSpeed()						|[double]  | DONE
+	getTime()						|[double]  | DONE
 atmos.py
-	getRho(alt)						| DONE
-	getMu(alt)						| DONE (check this)
-	getT_localstag(alt)					| TODO
+	getRho(alt)						|double    | DONE
+	getMu(alt)						|double	   | DONE (check this)
+	getT_localstag(alt)					|double	   | TODO	|Eric
 						
 calc.py
-	calc_P_local(A_pmax, P_inf, q, AOA)				| DONE
-	calc_P_infstag(M_inf)					| DONE
-	calc_P_localstag_sub(P_local, P_infstag, M_inf)		| DONE
-	calc_P_localstag_super(P_infstag, M_inf)		| DONE
-	calc_mach_local(P_localstag, P_local)			| DONE
-	calc_T_local(T_localstag, mach_local)			| TODO
-	calc_T_recov(recov_fact, mach_local)			| TODO
-	calc_T_ref(T_local, T_recov)				| TODO
-	calc_k_ref(T_ref)					| TODO
-	calc_h(Nu, k_ref, dist)					| TODO
-	calcTemp(...)						| TODO
+	calc_P_local(A_pmax, P_inf, q, AOA)			|double	   | DONE
+	calc_P_infstag(M_inf)					|double	   | DONE
+	calc_P_localstag_sub(P_local, P_infstag, M_inf)		|double	   | DONE
+	calc_P_localstag_super(P_infstag, M_inf)		|double	   | DONE
+	calc_mach_local(P_localstag, P_local)			|double	   | DONE
+	calc_T_local(T_localstag, mach_local)			|double	   | TODO	|Eric
+	calc_T_recov(recov_fact, mach_local)			|double    | TODO	|Eric
+	calc_T_ref(T_local, T_recov)				|double	   | TODO	|Brandon
+	calc_k_ref(T_ref)					|double	   | TODO	|Brandon
+	calc_h(Nu, k_ref, dist)					|double	   | TODO	|Brandon
+	calcTemp(...)						|double	   | TODO	|Saksham
 deminsionless.py
-	calcRe(rho, mu, speed, x_char)				| TODO
-	calcPr(mu, k, c_p)					| TODO
-	calcNu(Re, Pr, isLaminar)				| TODO
+	calcRe(rho, mu, speed, x_char)				|double	   | TODO	|Saksham
+	calcPr(mu, k, c_p)					|double	   | TODO	|Saksham
+	calcNu(Re, Pr, isLaminar)				|double	   | TODO	|Saksham
