@@ -25,7 +25,7 @@ calc.py
 	calc_T_recov(recov_fact, mach_local)			|double    | TODO	|Eric
 	calc_T_ref(T_local, T_recov)				|double	   | TODO	|Brandon
 	calc_k_ref(T_ref)					|double	   | TODO	|Brandon
-	calc_h(Nu, k_ref, dist)					|double	   | TODO	|Brandon
+	calc_h(Nu, k_ref, dist)					|double	   | DONE	|Brandon
 	calcTemp(...)						|double	   | TODO	|Saksham
 deminsionless.py
 	calcRe(rho, mu, speed, x_char)				|double	   | DONE	|Saksham
