@@ -53,12 +53,8 @@ def main ():
         T_ref = calc.calc_T_ref(T_local, T_recov)
         k_ref = calc.calc_k_ref(T_ref)
         if (i == 0):                        # Calculate h for first time step
-            h1 = calc.calc_h(Nu, k_ref, dist)  # dist will be some constant
+            h1 = calc.calc_h(Nu, k_ref, dist)  # dist will be some constant (where the plexiglass begins)
         T_wall = calc.calcTemp(h1, )
         temp_vec.append(T_wall)
 
     printTable()
-
-def calcTemp (h1, ):
-    h2 = calc.calc_h()              # Won't this always be equal to h1??
-    while (abs(h2-h1) >= 0.001):
