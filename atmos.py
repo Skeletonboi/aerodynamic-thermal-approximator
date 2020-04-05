@@ -48,12 +48,12 @@ class Atmos:
 
 		#TODO: Add 3rd index: mu (dependent on alt)
 		return mu
+
 	def getP(self,alt):	#TODO: Add Atmospheric Pressure Data wrt Altitude
 		return 1
 
-	def getT_localstag(self, alt, speed):
-		return T
-
+	def getT_static(self, alt):	#TODO: Add static temp data wrt altitude and extrapolate from that for this fnc
+		return T_static
 
 if __name__=='__main__':
 	x = Atmos()

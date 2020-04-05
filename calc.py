@@ -34,7 +34,10 @@ def calc_mach_local(P_localstag, P_local):
     mach_local=(factor2*(2/gamma-1))**.5
     return mach_local
 
-def calc_T_local(T_localstag, mach_local):    
+def calc_T_localstag(T_static, speed):
+    return T_localstag
+
+def calc_T_local(T_localstag, mach_local):
     T_local = T_localstag/(1+((gamma-1)/2)*mach_local**2)
     return T_local
 

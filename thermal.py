@@ -35,7 +35,8 @@ def main ():
             isLaminar = False
         Pr = dimensionless.calcPr(atmosData.getMu(alt_vec[i]), k, c_p)
         Nu = dimensionless.calcNu(Re, Pr, isLaminar)    #Args: (int, int, boolean)
-        T_localstag = atmosData.getT_localstag(alt_vec[i], speed_vec[i])          # TODO: Add this function to atmos.py
+        T_static = atmosData.getT_static(alt_vec[i])
+        T_localstag = calc.calc_T_localstag(T_static, speed_vec[i])
         # Calculating thermal conductivity at reference temperature
         P_local = calc.calc_P_local(C_pmax, P_inf, q)               # Victor: How is P_local cancelling out??
         P_infstag = calc.calc_P_infstag(M_inf)                      # Victor: How is M_inf different from the mach num? Which one uses the speed vector we're given?
