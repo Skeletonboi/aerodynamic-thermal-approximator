@@ -51,6 +51,9 @@ class Atmos:
 	def getP(self,alt):	#TODO: Add Atmospheric Pressure Data wrt Altitude
 		return 1
 
+	def getT_localstag(self, alt, speed):
+		return T
+
 
 if __name__=='__main__':
 	x = Atmos()
