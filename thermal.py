@@ -27,7 +27,7 @@ def main ():
     temp_vec = [T_wall]
     atmosData = atmos.Atmos() # Check if this is instantiating class properly
 
-    for i in range(0, len(time_vec)):
+    for i in range(1, len(time_vec)):
         h1 = 0
         h2 = 100
         while not (abs(h2-h1) < 0.001):
@@ -57,11 +57,12 @@ def main ():
             T_recov = calc.calc_T_recov(recov_fact, mach_local)
             T_ref = calc.calc_T_ref(T_local, T_recov, T_wall)
             k_ref = calc.calc_k_ref(T_ref)
-            if (i == 0):                           # Calculate h for first time step
+            if (i == 1):                           # Calculate h for first time step
                 h2 = calc.calc_h(Nu, k_ref, dist)  # dist will be some constant (where the fiberglass begins)
             else:
                 h2 = calc.calc_h(Nu, k_ref, dist)      # dist will be some constant (where the fiberglass begins)
-            T_wall = calc.calcTemp(h2, area, T_recov, T_wall, T_ref, mass, c_p)
+            dt = time_vec[i]-time_vec[i-1]
+            T_wall = calc.calcTemp(h2, area, T_recov, T_wall, T_ref, constants.getMass(), constants.getEmmisivity(), constants.getc_p(), dt)
         temp_vec.append(T_wall)
 
     printTable()

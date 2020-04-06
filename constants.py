@@ -10,6 +10,10 @@ c_p = None
 alt_init = None
 # Initial Wall Temp
 T_wall_init = None
+# Emmisivity of Material
+emmisivity = None
+# Mass of Rocket [kg]
+mass = None
 #gamma
 gamma = None
 
@@ -23,5 +27,9 @@ def getAlt():
     return alt_init
 def getT_wall():
     return T_wall_init
-def get_gamma():
+def getEmmisivity():
+    return emmisivity
+def getMass():
+    return mass
+def getGamma():
     return gamma

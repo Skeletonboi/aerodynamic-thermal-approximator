@@ -2,7 +2,7 @@ import math as m
 from flightData import getAOA
 from constants import *
 
-gamma = get_gamma()
+gamma = getGamma()
 
 def calc_P_local(C_pmax, P_inf, q, AOA):
     #q : dynamic pressure
@@ -55,11 +55,6 @@ def calc_h(Nu, k_ref, dist):
     h=(3**0.5)*(Nu*k_ref)/dist
     return h
 
-# Recursive function
-'''
-def calcTemp():     # Need to add arguments to this
-    h2 = calc_h()   # Won't this always be equal to h1??
-    while (abs(h2 - h1) >= 0.001):
-        return
-    pass
-'''
+def calcTemp(h, area, T_recov, T_wall, T_ref, mass, emmisivity, c_p, dt):
+    T_wall_new = (h*area*(T_recov-T_wall)-(5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_ref**4)))*dt/(mass*c_p)+T_wall
+    return T_wall_new

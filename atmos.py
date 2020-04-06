@@ -54,7 +54,7 @@ class Atmos:
 		return mu
 
 	def getP(self,alt):	#TODO: Add Atmospheric Pressure Data wrt Altitude
-		return 1
+		pass
 
 	def getT_static(self, alt):	#TODO: Add static temp data wrt altitude and extrapolate from that for this fnc
 		return T_static
