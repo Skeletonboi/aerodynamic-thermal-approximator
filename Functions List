@@ -3,7 +3,7 @@
 constants.py
 	getx_char()						|double	   | DONE
 	getk()							|double	   | DONE
-	getc_p()						|double	   | DONE
+	getc_p()						|double	   | TODO	|Saksham (this won't be a const at diff temps :/)
 	getT_wall						|double	   | DONE
 	getEmmisivity()						|double	   | DONE	|Saksham
 	getMass()						|double	   | DONE	|Saksham
