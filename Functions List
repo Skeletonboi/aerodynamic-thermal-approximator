@@ -7,7 +7,7 @@ constants.py
 	getT_wall						|double	   | DONE
 	getEmmisivity()						|double	   | DONE	|Saksham
 	getMass()						|double	   | DONE	|Saksham
-	getGamma						|double    | TODO	|Brandon (Eric: I put a initial get function there)
+	getGamma()						|double    | TODO	|Brandon (Eric: I put a initial get function there)
 flightData.py
 	getAlt()						|[int]	   | DONE
 	getSpeed()						|[double]  | DONE
