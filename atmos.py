@@ -1,4 +1,8 @@
 # Lookup table for atmospheric properties (for altitude)
+from constants import get_gamma
+from flightData import getSpeed
+
+
 class Atmos:
 	def __init__(self):
 		# Viscosity and Density Tables (US American Toolbox)
@@ -54,6 +58,13 @@ class Atmos:
 
 	def getT_static(self, alt):	#TODO: Add static temp data wrt altitude and extrapolate from that for this fnc
 		return T_static
+
+	def getT_localstag(self,alt):
+		Mach = getSpeed()
+		gamma = get_gamma()
+	
+	def getT_localstag(self, alt, speed):
+		return T
 
 if __name__=='__main__':
 	x = Atmos()
