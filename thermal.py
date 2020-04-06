@@ -18,13 +18,13 @@ def main ():
     x_char = constants.getx_char()
     k = constants.getk()
     c_p = constants.getc_p()
-    T_wall = constants.getT_wall()  # Initial Wall Temp
+    T_wall_init = constants.getT_wall()  # Initial Wall Temp
 
     # Get Flight Data
     alt_vec = flightData.getAlt()
     speed_vec = flightData.getSpeed()
     time_vec = flightData.getTime()
-    temp_vec = [T_wall]
+    temp_vec = [T_wall_init]
     atmosData = atmos.Atmos() # Check if this is instantiating class properly
 
     for i in range(0, len(time_vec)):
@@ -35,7 +35,7 @@ def main ():
             isLaminar = False
         Pr = dimensionless.calcPr(atmosData.getMu(alt_vec[i]), k, c_p)
         Nu = dimensionless.calcNu(Re, Pr, isLaminar)    #Args: (int, int, boolean)
-        T_localstag = atmosData.getT_localstag(alt_vec[i])          # TODO: Add this function to atmos.py
+        T_localstag = atmosData.getT_localstag(alt_vec[i], speed_vec[i])          # TODO: Add this function to atmos.py
         # Calculating thermal conductivity at reference temperature
         P_local = calc.calc_P_local(C_pmax, P_inf, q)               # Victor: How is P_local cancelling out??
         P_infstag = calc.calc_P_infstag(M_inf)                      # Victor: How is M_inf different from the mach num? Which one uses the speed vector we're given?
@@ -53,8 +53,8 @@ def main ():
         T_ref = calc.calc_T_ref(T_local, T_recov)
         k_ref = calc.calc_k_ref(T_ref)
         if (i == 0):                        # Calculate h for first time step
-            h1 = calc.calc_h(Nu, k_ref, dist)  # dist will be some constant (where the plexiglass begins)
-        T_wall = calc.calcTemp(h1, )
+            h1 = calc.calc_h(Nu, k_ref, dist)  # dist will be some constant (where the fiberglass begins)
+        T_wall = calc.calcTemp(h1, area, T_recov, T_wall_init, T_ref, mass, c_p)
         temp_vec.append(T_wall)
 
     printTable()

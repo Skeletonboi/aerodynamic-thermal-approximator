@@ -13,16 +13,16 @@ flightData.py
 atmos.py
 	getRho(alt)						|double    | DONE
 	getMu(alt)						|double	   | DONE (check this)
-	getT_localstag(alt)					|double	   | TODO	|Eric
-						
+	getT_static(alt)					|double	   | TODO	|Eric	
 calc.py
 	calc_P_local(A_pmax, P_inf, q, AOA)			|double	   | DONE
 	calc_P_infstag(M_inf)					|double	   | DONE
 	calc_P_localstag_sub(P_local, P_infstag, M_inf)		|double	   | DONE
 	calc_P_localstag_super(P_infstag, M_inf)		|double	   | DONE
+	calc_T_localstag(T_static, speed)			|double	   | DONE	|Eric
 	calc_mach_local(P_localstag, P_local)			|double	   | DONE
 	calc_T_local(T_localstag, mach_local)			|double	   | DONE
-	calc_T_recov(T_local,recov_fact, mach_local)			|double    | DONE
+	calc_T_recov(T_local,recov_fact, mach_local)		|double    | DONE
 	calc_T_ref(T_local, T_recov)				|double	   | TODO	|Brandon
 	calc_k_ref(T_ref)					|double	   | TODO	|Brandon
 	calc_h(Nu, k_ref, dist)					|double	   | DONE	|Brandon
