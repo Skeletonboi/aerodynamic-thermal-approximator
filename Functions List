@@ -3,9 +3,11 @@
 constants.py
 	getx_char()						|double	   | DONE
 	getk()							|double	   | DONE
-	getc_p()						|double	   | DONE
+	getc_p()						|double	   | TODO	|Saksham (this won't be a const at diff temps :/)
 	getT_wall						|double	   | DONE
-	gamma							|double    | TODO	|Brandon (Eric: I put a initial get function there)
+	getEmmisivity()						|double	   | DONE	|Saksham
+	getMass()						|double	   | DONE	|Saksham
+	getGamma()						|double    | TODO	|Brandon (Eric: I put a initial get function there)
 flightData.py
 	getAlt()						|[int]	   | DONE
 	getSpeed()						|[double]  | DONE
@@ -13,6 +15,7 @@ flightData.py
 atmos.py
 	getRho(alt)						|double    | DONE
 	getMu(alt)						|double	   | DONE (check this)
+	getP(alt)						|double    | TODO	|Eric
 	getT_static(alt)					|double	   | TODO	|Eric	
 calc.py
 	calc_P_local(A_pmax, P_inf, q, AOA)			|double	   | DONE
@@ -23,10 +26,10 @@ calc.py
 	calc_mach_local(P_localstag, P_local)			|double	   | DONE
 	calc_T_local(T_localstag, mach_local)			|double	   | DONE
 	calc_T_recov(T_local,recov_fact, mach_local)		|double    | DONE
-	calc_T_ref(T_local, T_recov)				|double	   | TODO	|Brandon
+	calc_T_ref(T_local, T_recov, T_wall)			|double	   | TODO	|Brandon
 	calc_k_ref(T_ref)					|double	   | TODO	|Brandon
 	calc_h(Nu, k_ref, dist)					|double	   | DONE	|Brandon
-	calcTemp(...)						|double	   | TODO	|Saksham
+	calcTemp(h, area, T_recov, T_wall, T_ref, mass, c_p, dt)|double	   | DONE	|Saksham
 deminsionless.py
 	calcRe(rho, mu, speed, x_char)				|double	   | DONE	|Saksham
 	calcPr(mu, k, c_p)					|double	   | DONE	|Saksham
