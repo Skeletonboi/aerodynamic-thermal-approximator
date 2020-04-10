@@ -43,7 +43,7 @@ def calc_T_recov(T_local, recov_fact, mach_local):
     return T_recov
 
 def calc_T_ref(T_local, T_recov,T_wall):
-        T_ref=T_local+0.5*(T_wall-T_local)+0.22*(T_recov-T_local)
+    T_ref=T_local+0.5*(T_wall-T_local)+0.22*(T_recov-T_local)
     return T_ref
 
 def calc_k_ref(T_ref):
