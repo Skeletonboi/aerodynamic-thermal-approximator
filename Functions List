@@ -2,7 +2,7 @@
 
 constants.py
 	getx_char()						|double	   | DONE
-	getk()							|double	   | DONE
+	getk()							|double	   | TODO	|How do we deal with k of epoxy bleeding into fiberglass
 	getc_p()						|double	   | DONE
 	getT_wall						|double	   | DONE
 	gamma							|double    | TODO	|Brandon
