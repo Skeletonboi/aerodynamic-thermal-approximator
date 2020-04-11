@@ -60,7 +60,7 @@ class Atmos:
 		return T_static
 
 	def getT_localstag(self, alt, speed, c):
-		Temp = get_temp() #need to have a function that gets the temp at certain altitude
+		Temp = getT_static(alt)
 		T_localstag = Temp + speed**2/(c*2)
 		return T_localstag
 
