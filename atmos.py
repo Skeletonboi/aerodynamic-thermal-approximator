@@ -60,7 +60,7 @@ class Atmos:
 		return T_static
 
 	def getT_localstag(self, alt, speed, c):
-		Temp = getT_static(alt)
+		Temp = self.getT_static(alt)
 		T_localstag = Temp + speed**2/(c*2)
 		return T_localstag
 
