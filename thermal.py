@@ -28,6 +28,7 @@ def main ():
     atmosData = atmos.Atmos() # Check if this is instantiating class properly
 
     for i in range(1, len(time_vec)):
+        speed = calc.calc_speed(mach)
         h1 = 0
         h2 = 100
         while not (abs(h2-h1) < 0.001):

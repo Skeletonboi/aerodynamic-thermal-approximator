@@ -14,7 +14,8 @@ atmos.py
 	getRho(alt)						|double    | DONE
 	getMu(alt)						|double	   | DONE (check this)
 	getP(alt)						|double    | TODO	|Eric
-	getT_static(alt)					|double	   | DONE	|Eric					
+	getT_static(alt)					|double	   | DONE	|Eric
+	getT_localstag						|double	   | DONE	|Eric
 calc.py
 	calc_P_local(A_pmax, P_inf, q, AOA)			|double	   | DONE
 	calc_P_infstag(M_inf)					|double	   | DONE
