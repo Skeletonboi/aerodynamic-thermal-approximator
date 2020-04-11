@@ -13,8 +13,8 @@ flightData.py
 atmos.py
 	getRho(alt)						|double    | DONE
 	getMu(alt)						|double	   | DONE (check this)
-	getT_localstag(alt)					|double	   | TODO	|Eric
-						
+	getP(alt)						|double    | TODO	|Eric
+	getT_static(alt)					|double	   | DONE	|Eric					
 calc.py
 	calc_P_local(A_pmax, P_inf, q, AOA)			|double	   | DONE
 	calc_P_infstag(M_inf)					|double	   | DONE
@@ -26,7 +26,8 @@ calc.py
 	calc_T_ref(T_local, T_recov,T_wall)			|double	   | DONE	|Brandon
 	calc_k_ref(T_ref)					|double	   | TODO**	|Brandon
 	calc_h(Nu, k_ref, dist)					|double	   | DONE	|Brandon
-	calcTemp(...)						|double	   | TODO	|Saksham
+	calcTemp(h, area, T_recov, T_wall, T_ref, mass, 	|double	   | DONE	|Saksham
+	emmisivity, c_p, dt)
 deminsionless.py
 	calcRe(rho, mu, speed, x_char)				|double	   | DONE	|Saksham
 	calcPr(mu, k, c_p)					|double	   | DONE	|Saksham
