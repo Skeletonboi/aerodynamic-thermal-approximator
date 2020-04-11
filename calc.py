@@ -53,6 +53,10 @@ def calc_h(Nu, k_ref, dist):
     h=(3**0.5)*(Nu*k_ref)/dist
     return h
 
+def calc_mach(speed):
+
+    return mach
+
 def calcTemp(h, area, T_recov, T_wall, T_ref, mass, emmisivity, c_p, dt):
     T_wall_new = (h*area*(T_recov-T_wall)-(5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_ref**4)))*dt/(mass*c_p)+T_wall
     return T_wall_new

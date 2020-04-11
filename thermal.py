@@ -22,13 +22,13 @@ def main ():
 
     # Get Flight Data
     alt_vec = flightData.getAlt()
-    speed_vec = flightData.getSpeed()
+    speed_vec = flightData.getSpeed()   # Units: [m/s]
     time_vec = flightData.getTime()
     temp_vec = [T_wall]
     atmosData = atmos.Atmos() # Check if this is instantiating class properly
 
     for i in range(1, len(time_vec)):
-        speed = calc.calc_speed(mach)
+        mach = calc.calc_mach(speed)
         h1 = 0
         h2 = 100
         while not (abs(h2-h1) < 0.001):
@@ -45,7 +45,7 @@ def main ():
             # Calculating thermal conductivity at reference temperature
             P_local = calc.calc_P_local(C_pmax, P_inf, q)               # Victor: How is P_local cancelling out??
             P_infstag = calc.calc_P_infstag(M_inf)                      # Victor: How is M_inf different from the mach num? Which one uses the speed vector we're given?
-            if (speed_vec[i]/343 < 1):          # If mach < 1
+            if (mach < 1):          # If mach < 1
                 P_localstag = calc.calc_P_localstag_sub(P_local, P_infstag, M_inf)
             else:                               # If mach >= 1
                 P_localstag = calc.calc_P_localstag_super(P_infstag, M_inf)
