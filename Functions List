@@ -5,7 +5,7 @@ constants.py
 	getk()							|double	   | TODO	|How do we deal with k of epoxy bleeding into fiberglass
 	getc_p()						|double	   | DONE
 	getT_wall						|double	   | DONE
-	gamma							|double    | TODO	|Brandon
+	getGamma						|double    | DONE	|Brandon
 flightData.py
 	getAlt()						|[int]	   | DONE
 	getSpeed()						|[double]  | DONE
@@ -13,7 +13,6 @@ flightData.py
 atmos.py
 	getRho(alt)						|double    | DONE
 	getMu(alt)						|double	   | DONE (check this)
-	getP(alt)						|double    | TODO	|Eric
 	getT_static(alt)					|double	   | DONE	|Eric
 	getT_localstag						|double	   | DONE	|Eric
 calc.py
@@ -22,11 +21,12 @@ calc.py
 	calc_P_localstag_sub(P_local, P_infstag, M_inf)		|double	   | DONE
 	calc_P_localstag_super(P_infstag, M_inf)		|double	   | DONE
 	calc_mach_local(P_localstag, P_local)			|double	   | DONE
-	calc_T_local(T_localstag, mach_local)			|double	   | TODO	|Eric
-	calc_T_recov(recov_fact, mach_local)			|double    | TODO	|Eric
+	calc_T_local(T_localstag, mach_local)			|double	   | DONE	|Eric
+	calc_T_recov(recov_fact, mach_local)			|double    | DONE	|Eric
 	calc_T_ref(T_local, T_recov,T_wall)			|double	   | DONE	|Brandon
 	calc_k_ref(T_ref)					|double	   | TODO**	|Brandon
 	calc_h(Nu, k_ref, dist)					|double	   | DONE	|Brandon
+	calc_mach(speed)					|double	   | TODO	|Victor
 	calcTemp(h, area, T_recov, T_wall, T_ref, mass, 	|double	   | DONE	|Saksham
 	emmisivity, c_p, dt)
 deminsionless.py
