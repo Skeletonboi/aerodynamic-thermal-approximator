@@ -43,6 +43,7 @@ class Atmos:
 		return T_static
 
 	def getT_localstag(self, alt, speed, c_p):
+		#https://en.wikipedia.org/wiki/Stagnation_temperature
 		T_static = self.getT_static(alt)
 		T_localstag = T_static + speed**2/(c_p*2)
 		return T_localstag
