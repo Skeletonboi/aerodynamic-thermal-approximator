@@ -24,7 +24,8 @@ def getx_char():
 def getk(T_wall):
     # T vs k data extrapolated from: https://www.engineeringtoolbox.com/fiberglas-insulation-k-values-d_1172.html
     k_fiberglass = (1.59*(10**(-4)))*T_wall - 0.008
-
+    # T vs k data extrapolated from: https://www.govinfo.gov/content/pkg/GOVPUB-C13-bd8891a48757eb8f3c721febd7558612/pdf/GOVPUB-C13-bd8891a48757eb8f3c721febd7558612.pdf
+    k_epoxy = None  # INCOMPLETE
     k_eff = (k_fiberglass*w_fiberglass + k_epoxy*w_epoxy)/(w_fiberglass + w_epoxy)
     return k_eff
 def getc_p():
