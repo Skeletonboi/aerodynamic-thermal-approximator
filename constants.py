@@ -14,8 +14,8 @@ alt_init = None
 T_wall_init = None
 # Emmisivity of Material
 emmisivity = None
-# Mass of Rocket [kg]
-mass = None
+# Mass of Nosecone [kg]
+mass = 0.600
 #gamma
 gamma = None
 
