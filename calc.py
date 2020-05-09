@@ -1,6 +1,7 @@
 import math as m
 from flightData import getAOA
 from constants import *
+import numpy as np
 
 gamma = getGamma()
 
@@ -53,9 +54,12 @@ def calc_h(Nu, k_ref, dist):
     h=(3**0.5)*(Nu*k_ref)/dist
     return h
 
-def calc_mach(speed):
-
-    return mach
+def calc_speed(mach, T):
+    # Calculated using: https://www.grc.nasa.gov/www/k-12/airplane/sound.html
+    R = 286                 # Gas constant
+    c = np.sqrt(gamma*R*T)  # Speed of sound
+    speed = mach*c
+    return speed
 
 def calcTemp(h, area, T_recov, T_wall, T_ref, mass, emmisivity, c_p, dt):
     T_wall_new = (h*area*(T_recov-T_wall)-(5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_ref**4)))*dt/(mass*c_p)+T_wall

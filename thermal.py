@@ -22,30 +22,30 @@ def main ():
 
     # Get Flight Data
     alt_vec = flightData.getAlt()
-    speed_vec = flightData.getSpeed()   # Units: [m/s]
+    mach_vec = flightData.getSpeed()    # Units: [unitless]
     time_vec = flightData.getTime()
     temp_vec = [T_wall]
     atmosData = atmos.Atmos() # Check if this is instantiating class properly
 
     for i in range(1, len(time_vec)):
-        mach = calc.calc_mach(speed)
+        speed = calc.calc_speed(mach_vec[i], temp_vec[i])
         h1 = 0
         h2 = 100
         while not (abs(h2-h1) < 0.001):
             h1 = h2
             # Calculating Nu
             isLaminar = True
-            Re = dimensionless.calcRe(atmosData.getRho(alt_vec[i]), atmosData.getMu(alt_vec[i]), speed_vec[i], x_char)
+            Re = dimensionless.calcRe(atmosData.getRho(alt_vec[i]), atmosData.getMu(alt_vec[i]), speed, x_char)
             if (Re >= 10**5):
                 isLaminar = False
             Pr = dimensionless.calcPr(atmosData.getMu(alt_vec[i]), k, c_p)
             Nu = dimensionless.calcNu(Re, Pr, isLaminar)    #Args: (int, int, boolean)
             T_static = atmosData.getT_static(alt_vec[i])
-            T_localstag = calc.calc_T_localstag(T_static, speed_vec[i])
+            T_localstag = calc.calc_T_localstag(T_static, speed)
             # Calculating thermal conductivity at reference temperature
             P_local = calc.calc_P_local(C_pmax, P_inf, q)               # Victor: How is P_local cancelling out??
             P_infstag = calc.calc_P_infstag(M_inf)                      # Victor: How is M_inf different from the mach num? Which one uses the speed vector we're given?
-            if (mach < 1):          # If mach < 1
+            if (mach_vec[i] < 1):          # If mach < 1
                 P_localstag = calc.calc_P_localstag_sub(P_local, P_infstag, M_inf)
             else:                               # If mach >= 1
                 P_localstag = calc.calc_P_localstag_super(P_infstag, M_inf)
