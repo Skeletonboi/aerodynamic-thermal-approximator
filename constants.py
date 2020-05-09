@@ -16,8 +16,10 @@ T_wall_init = None
 emmisivity = None
 # Mass of Nosecone [kg]
 mass = 0.600
-#gamma
-gamma = None
+#gamma (valid for calorically perfect gas)
+#calorically imperfect: https://www.grc.nasa.gov/WWW/BGH/stagtmp.html
+#calorically perfect: https://www.grc.nasa.gov/WWW/BGH/realspec.html
+gamma = 1.4
 
 def getx_char():
     return x_char
