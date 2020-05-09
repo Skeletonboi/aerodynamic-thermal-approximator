@@ -10,7 +10,7 @@ def calcRe (rho, mu, vel, x_cr):
 def calcPr (mu, k, c_p):
     return c_p*mu/k
 
-def calcNu (Re, Pr, isLaminar):
+def calcNusslet (Re, Pr, isLaminar):
     if (isLaminar):
         return 0.33206*m.sqrt(Re)*(Pr**(1/3))
     else:
