@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
+<<<<<<< HEAD
     <list default="true" id="f0e10d8f-89dc-47dc-8d5e-9756a36ac7a9" name="Default Changelist" comment="" />
+=======
+    <list default="true" id="7050855a-1cdc-4b5d-a14e-5d47396e550c" name="Default Changelist" comment="" />
+>>>>>>> 3543abd10817af0a7b5235f2a6adb00ac3be5f30
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+<<<<<<< HEAD
   <component name="FUSProjectUsageTrigger">
     <session id="-464184318">
       <usages-collector id="statistics.lifecycle.project">
@@ -75,6 +80,8 @@
       </file>
     </leaf>
   </component>
+=======
+>>>>>>> 3543abd10817af0a7b5235f2a6adb00ac3be5f30
   <component name="FindInProjectRecents">
     <findStrings>
       <find>calcNu</find>
@@ -83,36 +90,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/thermal.py" />
-        <option value="$PROJECT_DIR$/dimensionless.py" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectFrameBounds" fullScreen="true">
     <option name="width" value="1440" />
     <option name="height" value="900" />
-  </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="aerodynamic-thermal-approximator" type="b2602c69:ProjectViewProjectNode" />
-              <item name="aerodynamic-thermal-approximator" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -166,6 +146,7 @@
     </task>
     <servers />
   </component>
+<<<<<<< HEAD
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
     <editor active="true" />
@@ -217,4 +198,6 @@
       </provider>
     </entry>
   </component>
+=======
+>>>>>>> 3543abd10817af0a7b5235f2a6adb00ac3be5f30
 </project>
