@@ -28,9 +28,10 @@ def main ():
     atmosData = atmos.Atmos() # Check if this is instantiating class properly
 
     for i in range(1, len(time_vec)):
-        speed = calc.calc_speed(mach_vec[i], temp_vec[i])
+        speed = calc.calc_speed(mach_vec[i], temp_vec[i-1])
         h1 = 0
         h2 = 100
+        print(i)
         while not (abs(h2-h1) < 0.001):
             h1 = h2
             # Calculating Nu
@@ -67,3 +68,5 @@ def main ():
         temp_vec.append(T_wall)
 
     printTable()
+
+a = main()
