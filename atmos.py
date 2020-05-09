@@ -1,5 +1,5 @@
 # Lookup table for atmospheric properties (for altitude)
-from constants import get_gamma
+from constants import getGamma
 from flightData import getSpeed
 
 class Atmos:
