@@ -55,6 +55,13 @@ class Atmos:
 		T_localstag = T_static + speed**2/(c_p*2)
 		return T_localstag
 
+	def getMu(self,alt):
+		# https://www.engineeringtoolbox.com/dynamic-absolute-kinematic-viscosity-d_412.html
+		rho = self.getRho(alt)
+		nu = self.getNu(alt)
+		return nu/rho
+
+
 if __name__=='__main__':
 	x = Atmos()
 	print(len(x.alt))
