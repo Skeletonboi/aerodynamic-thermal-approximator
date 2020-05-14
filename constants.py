@@ -1,13 +1,15 @@
 # ** Define these before running simulation **
 
 # Dimensions [m]
-x_char = None
-w_fiberglass = None     # Length of fiberglass layer
-w_epoxy = None          # Length of epoxy layer
+x_char = 0.1
+w_fiberglass = 0.1     # Length of fiberglass layer
+w_epoxy = 0.2          # Length of epoxy layer
 # Thermal Conductivity
 k = 0.04
-# Specific Heat Capacity
-c_p = None
+# Specific Heat Capacity [J/g*K]
+c_p = 0.4
+# Max Pressure Coefficient [unitless]
+C_pmax = 0.9
 # Initial Altitude
 alt_init = 0
 # Initial Wall Temp
@@ -20,9 +22,13 @@ mass = 0.600
 # calorically imperfect: https://www.grc.nasa.gov/WWW/BGH/stagtmp.html
 # calorically perfect: https://www.grc.nasa.gov/WWW/BGH/realspec.html
 gamma = 1.4
+# Free-stream Pressure [kPa]
+P_inf = 102
+# Distance of relevant material from the nosetip [m]
+dist = 0.2
+# Area of relevant material exposed to air [m^2]
+area = 0.09
 
-def getx_char():
-    return x_char
 def getk(
         #T_wall
         ):
@@ -33,15 +39,3 @@ def getk(
     #k_eff = (k_fiberglass*w_fiberglass + k_epoxy*w_epoxy)/(w_fiberglass + w_epoxy)
 
     return k
-def getc_p():
-    return c_p
-def getAlt():
-    return alt_init
-def getT_wall():
-    return T_wall_init
-def getEmmisivity():
-    return emmisivity
-def getMass():
-    return mass
-def getGamma():
-    return gamma

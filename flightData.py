@@ -1,3 +1,4 @@
+import constants
 #load pandas libraries
 import pandas as pd
 colnames = ['altData', 'speedData', 'timeData','A0AData']
@@ -27,3 +28,6 @@ def getAOA():
     for i in df.iloc[:,3]:
         A0A_Data += [i]
     return A0A_Data
+
+def getC_pmax():                # NOTE: INCOMPLETE, this needs to be varying with time
+    return constants.C_pmax

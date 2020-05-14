@@ -14,13 +14,11 @@ import dimensionless
 ###############################################################
 
 def main ():
-    # Define all constants
-    x_char = constants.getx_char()
-    k = constants.getk()
-    c_p = constants.getc_p()
-    T_wall = constants.getT_wall()  # Initial Wall Temp
+    T_wall = constants.T_wall_init
+    AOA = 15                            # NOTE: This should be a vector, changing over time
 
     # Get Flight Data
+    cpmax_vec = flightData.getC_pmax()
     alt_vec = flightData.getAlt()
     mach_vec = flightData.getSpeed()    # Units: [unitless]
     time_vec = flightData.getTime()
@@ -28,24 +26,26 @@ def main ():
     atmosData = atmos.Atmos()
 
     for i in range(1, len(time_vec)):
+        M_inf = mach_vec[i]
         speed = calc.calc_speed(mach_vec[i], temp_vec[i-1])
         h1 = 0
         h2 = 100
         print(i)
         while not (abs(h2-h1) < 0.001):
             h1 = h2
-            # Calculating Nu
+            # Calculating Nusslet's numer
             isLaminar = True
-            Re = dimensionless.calcRe(atmosData.getRho(alt_vec[i]), atmosData.getMu(alt_vec[i]), speed, x_char)
+            Re = dimensionless.calcRe(atmosData.getRho(alt_vec[i]), atmosData.getMu(alt_vec[i]), speed, constants.x_char)
             if (Re >= 10**5):
                 isLaminar = False
-            Pr = dimensionless.calcPr(atmosData.getMu(alt_vec[i]), k, c_p)
+            Pr = dimensionless.calcPr(atmosData.getMu(alt_vec[i]), constants.k, constants.c_p)
             nusslet = dimensionless.calcNusslet(Re, Pr, isLaminar)    #Args: (int, int, boolean)
             T_static = atmosData.getT_static(alt_vec[i])
-            T_localstag = calc.calc_T_localstag(T_static, speed)
+            T_localstag = calc.calc_T_localstag(T_static, mach_vec[i])
+            q = atmosData.getq(alt_vec[i], speed)
             # Calculating thermal conductivity at reference temperature
-            P_local = calc.calc_P_local(C_pmax, P_inf, q)
-            P_infstag = calc.calc_P_infstag(M_inf)
+            P_local = calc.calc_P_local(constants.C_pmax, constants.P_inf, q, AOA)
+            P_infstag = calc.calc_P_infstag(M_inf, constants.P_inf)
             if (mach_vec[i] < 1):          # If mach < 1
                 P_localstag = calc.calc_P_localstag_sub(P_local, P_infstag, M_inf)
             else:                               # If mach >= 1
@@ -56,17 +56,17 @@ def main ():
             else:
                 recov_fact = Pr**(1/3)
             T_local = calc.calc_T_local(T_localstag, mach_local)
-            T_recov = calc.calc_T_recov(recov_fact, mach_local)
+            T_recov = calc.calc_T_recov(T_local, recov_fact, mach_local)
             T_ref = calc.calc_T_ref(T_local, T_recov, T_wall)
             k_ref = calc.calc_k_ref(T_ref)
             if (i == 1):                           # Calculate h for first time step
-                h2 = calc.calc_h(Nu, k_ref, dist)  # dist will be some constant (where the fiberglass begins)
+                h2 = calc.calc_h(nusslet, k_ref, constants.dist)  # dist will be some constant (where the fiberglass begins)
             else:
-                h2 = calc.calc_h(Nu, k_ref, dist)      # dist will be some constant (where the fiberglass begins)
+                h2 = calc.calc_h(nusslet, k_ref, constants.dist)      # dist will be some constant (where the fiberglass begins)
             dt = time_vec[i]-time_vec[i-1]
-            T_wall = calc.calcTemp(h2, area, T_recov, T_wall, T_ref, constants.getMass(), constants.getEmmisivity(), constants.getc_p(), dt)
+            T_wall = calc.calcTemp(h2, constants.area, T_recov, T_wall, T_ref, constants.mass, constants.emmisivity, constants.c_p, dt)
         temp_vec.append(T_wall)
 
-    printTable()
+    # printTable()
 
-a = main()
+main()

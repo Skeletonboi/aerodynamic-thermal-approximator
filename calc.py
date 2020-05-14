@@ -1,9 +1,9 @@
 import math as m
 from flightData import getAOA
-from constants import *
+import constants
 import numpy as np
 
-gamma = getGamma()
+gamma = constants.gamma
 
 def calc_P_local(C_pmax, P_inf, q, AOA):
     #q : dynamic pressure
@@ -32,8 +32,17 @@ def calc_P_localstag_super(P_infstag, M_inf):
 def calc_mach_local(P_localstag, P_local):
     factor1 = (gamma-1)/gamma
     factor2 = (P_localstag/P_local)**factor1-1
+    print("P_localstag: ", P_localstag)
+    print("P_local: ", P_local)
+    print("Factor 1: ", factor1)
+    print("Factor 2: ", factor2)
     mach_local=(factor2*(2/gamma-1))**.5
+    print("Mach_local: ", mach_local)
     return mach_local
+
+def calc_T_localstag(T_static, mach):
+    T_localstag = T_static*(1+((mach**2)*(gamma-1)/2))
+    return T_localstag
 
 def calc_T_local(T_localstag, mach_local):
     T_local = T_localstag/(1+((gamma-1)/2)*mach_local**2)
@@ -47,8 +56,8 @@ def calc_T_ref(T_local, T_recov,T_wall):
     T_ref=T_local+0.5*(T_wall-T_local)+0.22*(T_recov-T_local)
     return T_ref
 
-def calc_k_ref(T_ref):
-    pass
+def calc_k_ref(T_ref):      # NOTE: INCOMPLETE
+    return 0.03
 
 def calc_h(Nu, k_ref, dist):
     h=(3**0.5)*(Nu*k_ref)/dist
