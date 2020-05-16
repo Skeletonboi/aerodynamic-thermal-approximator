@@ -6,6 +6,12 @@ import numpy as np
 gamma = constants.gamma
 
 def calc_P_local(C_pmax, P_inf, q, AOA):
+    print("--------")
+    print("q: ", q)
+    print("C_pmax: ", C_pmax)
+    print("AOA: ", AOA)
+    print("P_inf: ", P_inf)
+    print("--------")
     #q : dynamic pressure
     #C_pmax : maximum pressure coefficient on the body surface
     #P_inf : free stream pressure
@@ -31,13 +37,14 @@ def calc_P_localstag_super(P_infstag, M_inf):
 
 def calc_mach_local(P_localstag, P_local):
     factor1 = (gamma-1)/gamma
-    factor2 = (P_localstag/P_local)**factor1-1
+    factor2 = ((P_localstag/P_local)**factor1)-1
+    mach_local=(factor2*(2/gamma-1))**.5
+    print("--------")
+    print("gamma: ", gamma)
     print("P_localstag: ", P_localstag)
     print("P_local: ", P_local)
-    print("Factor 1: ", factor1)
-    print("Factor 2: ", factor2)
-    mach_local=(factor2*(2/gamma-1))**.5
-    print("Mach_local: ", mach_local)
+    print("mach_local: ", mach_local)
+    print("--------")
     return mach_local
 
 def calc_T_localstag(T_static, mach):
@@ -49,6 +56,11 @@ def calc_T_local(T_localstag, mach_local):
     return T_local
 
 def calc_T_recov(T_local, recov_fact, mach_local):
+    print("--------")
+    print("T_local: ", T_local)
+    print("recov_fact: ", recov_fact)
+    print("mach_local: ", mach_local)
+    print("--------")
     T_recov = T_local*(1+(mach_local**2)*recov_fact*(gamma-1)/2)
     return T_recov
 
@@ -68,8 +80,20 @@ def calc_speed(mach, T):
     R = 286                 # Gas constant
     c = np.sqrt(gamma*R*T)  # Speed of sound
     speed = mach*c
+    print("--------")
+    print("gamma: ", gamma)
+    print("R: ", R)
+    print("T: ", T)
+    print("mach: ", mach)
+    print("c: ", c)
+    print("speed: ", speed)
+    print("--------")
     return speed
 
 def calcTemp(h, area, T_recov, T_wall, T_ref, mass, emmisivity, c_p, dt):
+    print("h: ", h)
+    print("T_recov: ", T_recov)
+    print("T_wall: ", T_wall)
+    print("T_ref: ", T_ref)
     T_wall_new = (h*area*(T_recov-T_wall)-(5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_ref**4)))*dt/(mass*c_p)+T_wall
     return T_wall_new

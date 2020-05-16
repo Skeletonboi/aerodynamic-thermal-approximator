@@ -15,7 +15,7 @@ import dimensionless
 
 def main ():
     T_wall = constants.T_wall_init
-    AOA = 15                            # NOTE: This should be a vector, changing over time
+    AOA = 0.0523599                     # 3 degrees     # NOTE: This should be a vector, changing over time
 
     # Get Flight Data
     cpmax_vec = flightData.getC_pmax()
@@ -26,8 +26,11 @@ def main ():
     atmosData = atmos.Atmos()
 
     for i in range(1, len(time_vec)):
+        print ("i: ", i)
+        print("temp_vec: ", temp_vec)
+        print("temp_vec[i-1]: ", temp_vec[i-1])
         M_inf = mach_vec[i]
-        speed = calc.calc_speed(mach_vec[i], temp_vec[i-1])
+        speed = calc.calc_speed(mach_vec[i], temp_vec[i-i])
         h1 = 0
         h2 = 100
         print(i)
@@ -66,6 +69,7 @@ def main ():
             dt = time_vec[i]-time_vec[i-1]
             T_wall = calc.calcTemp(h2, constants.area, T_recov, T_wall, T_ref, constants.mass, constants.emmisivity, constants.c_p, dt)
         temp_vec.append(T_wall)
+        print ("Appended T_wall: ", T_wall)
 
     # printTable()
 

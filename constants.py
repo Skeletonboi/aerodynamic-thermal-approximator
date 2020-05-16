@@ -9,7 +9,7 @@ k = 0.04
 # Specific Heat Capacity [J/g*K]
 c_p = 0.4
 # Max Pressure Coefficient [unitless]
-C_pmax = 0.9
+C_pmax = 0.25
 # Initial Altitude
 alt_init = 0
 # Initial Wall Temp
