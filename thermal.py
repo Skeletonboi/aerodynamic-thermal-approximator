@@ -15,7 +15,7 @@ import dimensionless
 
 def main ():
     T_wall = constants.T_wall_init
-    AOA = 0.0523599                     # 3 degrees     # NOTE: This should be a vector, changing over time
+    AOA = 0.0523599                     # = 3 degrees   # NOTE: This should be a vector, changing over time
 
     # Get Flight Data
     cpmax_vec = flightData.getC_pmax()
@@ -50,7 +50,7 @@ def main ():
             P_local = calc.calc_P_local(constants.C_pmax, constants.P_inf, q, AOA)
             P_infstag = calc.calc_P_infstag(M_inf, constants.P_inf)
             if (mach_vec[i] < 1):          # If mach < 1
-                P_localstag = calc.calc_P_localstag_sub(P_local, P_infstag, M_inf)
+                P_localstag = calc.calc_P_localstag_sub(P_local, M_inf)
             else:                               # If mach >= 1
                 P_localstag = calc.calc_P_localstag_super(P_infstag, M_inf)
             mach_local = calc.calc_mach_local(P_localstag, P_local)
@@ -67,7 +67,8 @@ def main ():
             else:
                 h2 = calc.calc_h(nusslet, k_ref, constants.dist)      # dist will be some constant (where the fiberglass begins)
             dt = time_vec[i]-time_vec[i-1]
-            T_wall = calc.calcTemp(h2, constants.area, T_recov, T_wall, T_ref, constants.mass, constants.emmisivity, constants.c_p, dt)
+            T_radref = atmosData.getT_static(alt_vec[i])
+            T_wall = calc.calcTemp(h2, constants.area, T_recov, T_wall, T_radref, constants.mass, constants.emmisivity, constants.c_p, dt)
         temp_vec.append(T_wall)
         print ("Appended T_wall: ", T_wall)
 

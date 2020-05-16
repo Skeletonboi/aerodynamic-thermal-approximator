@@ -7,7 +7,7 @@ df = pd.read_csv("flightData.csv", names=['altData','speedData','timeData','A0AD
 def getAlt():
     Alt_Data=[]
     for i in df.iloc[:,1]:
-        Alt_Data+=[i]
+        Alt_Data+=[i+constants.alt_init]        # Take altitude of launch site into account
     return Alt_Data
 
 def getSpeed():

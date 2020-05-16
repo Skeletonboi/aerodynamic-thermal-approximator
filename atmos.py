@@ -43,8 +43,13 @@ class Atmos:
 			idx += 1
 		# Interpolate between the altitude values
 		diff = abs(alt - self.alt[idx]) / (self.alt[idx + 1] - self.alt[idx])
-		# Return viscosity
+		# Return T_static
 		T_static = self.temp_static[idx] + diff * abs(self.temp_static[idx] - self.temp_static[idx + 1])
+		print("---------")
+		print("idx: ", idx)
+		print("Alt [km]: ", alt)
+		print("hi: ", T_static)
+		print("---------")
 		return T_static
 
 	def getT_localstag(self, alt, speed, c_p):
@@ -68,7 +73,6 @@ class Atmos:
 		print("speed: ", speed)
 		print("--------")
 		return q
-
 
 if __name__=='__main__':
 	x = Atmos()
