@@ -1,6 +1,4 @@
 # Lookup table for atmospheric properties (for altitude)
-from constants import getGamma
-from flightData import getSpeed
 
 class Atmos:
 	def __init__(self):
@@ -61,6 +59,15 @@ class Atmos:
 		nu = self.getNu(alt)
 		return nu/rho
 
+	def getq(self,alt,speed):
+		# https://www.grc.nasa.gov/WWW/K-12/airplane/dynpress.html
+		rho = self.getRho(alt)
+		q = rho * 0.5 * (speed**2)
+		print("--------")
+		print("Rho: ", rho)
+		print("speed: ", speed)
+		print("--------")
+		return q
 
 if __name__=='__main__':
 	x = Atmos()

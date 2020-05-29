@@ -1,0 +1,16 @@
+Position from Nose Tip (centroid of area)
+Area of Concern
+AOA
+k_eff (for fiberglass/epoxy) is random, need approx
+
+
+Brandon
+- Extracting data from MATLAB figures to CSV, include c_p_max col
+
+Victor
+- Generate extrapolated c_p_max data over time by running through PANAIR, and send to Brandon Miller
+
+Run over multiple parts of the rocket, i.e. aluminum ox tank
+RM-10 validation w/ other papers that have heat data
+
+
