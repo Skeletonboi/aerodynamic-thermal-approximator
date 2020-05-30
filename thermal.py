@@ -1,4 +1,5 @@
 from math import sqrt, cos
+import math
 import constants
 import flightData
 import atmos
@@ -26,9 +27,9 @@ def main ():
     atmosData = atmos.Atmos()
 
     for i in range(1, len(time_vec)):
-        print ("i: ", i)
-        print("temp_vec: ", temp_vec)
-        print("temp_vec[i-1]: ", temp_vec[i-1])
+        print("vector: ", i)
+        if (math.isnan(temp_vec[i-1])):
+            break
         M_inf = mach_vec[i]
         speed = calc.calc_speed(mach_vec[i], temp_vec[i-i])
         h1 = 0

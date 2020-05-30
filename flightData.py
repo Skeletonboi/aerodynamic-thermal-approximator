@@ -1,8 +1,10 @@
 import constants
-#load pandas libraries
+# load pandas libraries
 import pandas as pd
 colnames = ['timeData', 'altData', 'speedData', 'A0AData']
-df = pd.read_csv("flightDataFINAL.csv", names=['altData','speedData','timeData','A0AData'], usecols=[0,1,2,3],header=None)
+df = pd.read_csv("flightDataFINAL.csv", names=['altData','speedData','timeData'], usecols=[0,1,2],header=None)
+# Once AOA data is added to 4th col of csv file, delete line above and use following line:
+# df = pd.read_csv("flightDataFINAL.csv", names=['altData','speedData','timeData','A0AData'], usecols=[0,1,2,3],header=None)
 
 def getAlt():
     Alt_Data=[]

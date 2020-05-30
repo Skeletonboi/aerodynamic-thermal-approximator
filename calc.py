@@ -66,15 +66,8 @@ def calc_speed(mach, T):
     return speed
 
 def calcTemp(h, area, T_recov, T_wall, T_radref, mass, emmisivity, c_p, dt):
-    print("h: ", h)
-    print("T_recov: ", T_recov)
-    print("T_wall: ", T_wall)
-    print("T_radref: ", T_radref)
     temp = (((h*area*(T_recov-T_wall))-((5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_radref**4))))*dt/(mass*c_p))
     conv = (h*area*(T_recov-T_wall))*dt/(mass*c_p)
     rad = ((5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_radref**4)))*dt/(mass*c_p)
-    print("conv: ", conv)
-    print("rad: ", rad)
-    print("temp: ", temp)
     T_wall_new = (((h*area*(T_recov-T_wall))-((5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_radref**4))))*dt/(mass*c_p))+T_wall
     return T_wall_new
