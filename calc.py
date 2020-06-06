@@ -65,9 +65,18 @@ def calc_speed(mach, T):
     speed = mach*c
     return speed
 
-def calcTemp(h, area, T_recov, T_wall, T_radref, mass, emmisivity, c_p, dt):
+def calcTemp(h, area, T_recov, T_wall, T_radref, mass, emmisivity, c_p, dt, i):
     temp = (((h*area*(T_recov-T_wall))-((5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_radref**4))))*dt/(mass*c_p))
     conv = (h*area*(T_recov-T_wall))*dt/(mass*c_p)
     rad = ((5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_radref**4)))*dt/(mass*c_p)
     T_wall_new = (((h*area*(T_recov-T_wall))-((5.67*(10**(-8)))*emmisivity*((T_wall**4)-(T_radref**4))))*dt/(mass*c_p))+T_wall
+    if i == 9:
+        print("---->")
+        print("temp: ", temp)
+        print("\tconv: ", conv)
+        print("\trad: ", rad)
+        print("\t\tT_wall^4: ", T_wall**4)
+        print("\t\tTradref^4: ", T_radref**4)
+        print("\t\tT_wall^4 - Tradref^4: ", (T_wall**4)-(T_radref**4))
+        print("new temp: ", T_wall_new)
     return T_wall_new

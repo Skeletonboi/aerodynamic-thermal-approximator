@@ -27,17 +27,15 @@ def main ():
     atmosData = atmos.Atmos()
 
     for i in range(1, len(time_vec)):
-        print("vector: ", i)
         if (math.isnan(temp_vec[i-1])):
             break
         M_inf = mach_vec[i]
         speed = calc.calc_speed(mach_vec[i], temp_vec[i-i])
         h1 = 0
         h2 = 100
-        print(i)
         while not (abs(h2-h1) < 0.001):
             h1 = h2
-            # Calculating Nusslet's numer
+            # Calculating Nusslet's number
             isLaminar = True
             Re = dimensionless.calcRe(atmosData.getRho(alt_vec[i]), atmosData.getMu(alt_vec[i]), speed, constants.x_char)
             if (Re >= 10**5):
@@ -69,10 +67,19 @@ def main ():
                 h2 = calc.calc_h(nusslet, k_ref, constants.dist)      # dist will be some constant (where the fiberglass begins)
             dt = time_vec[i]-time_vec[i-1]
             T_radref = atmosData.getT_static(alt_vec[i])
-            T_wall = calc.calcTemp(h2, constants.area, T_recov, T_wall, T_radref, constants.mass, constants.emmisivity, constants.c_p, dt)
+            T_wall = calc.calcTemp(h2, constants.area, T_recov, T_wall, T_radref, constants.mass, constants.emmisivity, constants.c_p, dt, i)
+            if i == 9:
+                print("----")
+                print("h2: ", h2)
+                print("k_ref: ", k_ref)
+                print("T_ref: ", T_ref)
         temp_vec.append(T_wall)
-        print ("Appended T_wall: ", T_wall)
+    printTable(time_vec, temp_vec)
 
-    # printTable()
+def printTable(time, temp):
+    print("\033[1m", "Vector\t| Time (s)\t| Wall Temperature (K)", "\033[0m")
+    # print("------------------------------------------")
+    for i in range (1, len(temp)):
+        print (i, "\t\t| ", time[i], " \t| ", round(temp[i],2))
 
 main()
